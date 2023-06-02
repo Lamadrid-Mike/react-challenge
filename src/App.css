@@ -1,0 +1,13 @@
+.main-container {
+  display: flex;
+  gap: 2em;
+  justify-content: center;
+}
+
+.left-item-layout {
+  width: 300px;
+}
+
+.main-right {
+  background-color: whitesmoke;
+}
