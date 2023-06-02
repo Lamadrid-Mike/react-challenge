@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import Button from "@mui/material/Button";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 import "./App.css";
 
 function App() {
@@ -21,12 +24,17 @@ function App() {
           <img
             src={el.image}
             alt={el.title}
-            style={{ width: 150, height: "auto" }}
+            style={{ width: 120, height: "auto" }}
           ></img>
           <p>{el.title}</p>
-          <button id={id + 1} onClick={descriptionBtn}>
-            description
-          </button>
+          <Button
+            size="small"
+            variant="contained"
+            id={id + 1}
+            onClick={descriptionBtn}
+          >
+            info
+          </Button>
         </div>
       );
     });
@@ -47,21 +55,29 @@ function App() {
   const rightSide = (object) => {
     return (
       <div className="description-layout">
-        <h3>${object.price}</h3>
-        <p>{object.description}</p>
+        <h1 className="text-align">${object.price}</h1>
+        <p className="p-text">{object.description}</p>
       </div>
+    );
+  };
+
+  const loadingEffect = () => {
+    return (
+      <Box sx={{ display: "flex" }}>
+        <CircularProgress />
+      </Box>
     );
   };
 
   return (
     <div>
-      <h1>clothing shop</h1>
-      <p>welcome to our collection please pick any</p>
+      <h1 className="text-align">clothing shop</h1>
+      <p className="text-align">welcome to our collection please pick any</p>
       <div className="main-container">
-        <div className="main-left">{data ? leftSide(data) : "Loading.."}</div>
-        <div className="main-right">
-          {showContent ? rightSide(rightData) : ""}
+        <div className="main-left">
+          {data ? leftSide(data) : loadingEffect()}
         </div>
+        <div className="main-right">{showContent && rightSide(rightData)}</div>
       </div>
     </div>
   );
