@@ -17,10 +17,19 @@
 }
 
 .main-right {
-  background-color: rgba(245, 245, 245, 0.686);
+  background-color: rgba(226, 226, 226, 0.686);
   margin: 0.5em;
+  max-width: 400px;
 }
 
 .p-text {
   margin: 0.5em;
+}
+
+p.count {
+  display: inline-block;
+}
+
+div.cart-btn {
+  margin-left: 0.5em;
 }
