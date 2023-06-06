@@ -9,6 +9,7 @@ import "./App.css";
 
 function App() {
   const [data, setData] = useState(null);
+  const [dataDownloaded, setDataDownloaded] = useState(false);
   const [rightData, setRightData] = useState(null);
   const [showContent, setShowContent] = useState(false);
 
@@ -16,7 +17,10 @@ function App() {
     return async function () {
       await fetch(Data)
         .then((response) => response.json())
-        .then((json) => setData(json));
+        .then((json) => {
+          setData(json);
+          setDataDownloaded(true);
+        });
     };
   }, []);
 
@@ -86,9 +90,7 @@ function App() {
       <h1 className="text-align">Clothing Shop</h1>
       <p className="text-align">welcome to our collection please pick any</p>
       <div className="main-container">
-        <div className="main-left">
-          {data ? leftSide(data) : loadingEffect()}
-        </div>
+        <div className="main-left">{dataDownloaded && leftSide(data)}</div>
         <div className="main-right">{showContent && rightSide(rightData)}</div>
       </div>
     </div>
