@@ -77,14 +77,6 @@ function App() {
     );
   };
 
-  const loadingEffect = () => {
-    return (
-      <Box sx={{ display: "flex" }}>
-        <CircularProgress />
-      </Box>
-    );
-  };
-
   return (
     <div>
       <h1 className="text-align">Clothing Shop</h1>
