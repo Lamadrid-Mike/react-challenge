@@ -4,6 +4,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
+import Data from "./Data.txt";
 import "./App.css";
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
 
   useEffect(() => {
     return async function () {
-      await fetch("https://fakestoreapi.com/products?limit=4")
+      await fetch(Data)
         .then((response) => response.json())
         .then((json) => setData(json));
     };
