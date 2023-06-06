@@ -13,7 +13,7 @@ function App() {
 
   useEffect(() => {
     return async function () {
-      await fetch("http://fakestoreapi.com/products?limit=4")
+      await fetch("https://fakestoreapi.com/products?limit=4")
         .then((response) => response.json())
         .then((json) => setData(json));
     };
