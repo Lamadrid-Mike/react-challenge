@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
+import CircularProgress from "@mui/material/CircularProgress";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Rating from "@mui/material/Rating";
+import Box from "@mui/material/Box";
 import Data from "./Data.txt";
 import "./App.css";
 
 function App() {
   const [data, setData] = useState(null);
-  const [dataDownloaded, setDataDownloaded] = useState(false);
   const [rightData, setRightData] = useState(null);
   const [showContent, setShowContent] = useState(false);
 
@@ -15,10 +16,7 @@ function App() {
     return async function () {
       await fetch(Data)
         .then((response) => response.json())
-        .then((json) => {
-          setData(json);
-          setDataDownloaded(true);
-        });
+        .then((json) => setData(json));
     };
   }, []);
 
@@ -75,12 +73,22 @@ function App() {
     );
   };
 
+  const loadingEffect = () => {
+    return (
+      <Box sx={{ display: "flex" }}>
+        <CircularProgress />
+      </Box>
+    );
+  };
+
   return (
     <div>
       <h1 className="text-align">Clothing Shop</h1>
       <p className="text-align">welcome to our collection please pick any</p>
       <div className="main-container">
-        <div className="main-left">{dataDownloaded && leftSide(data)}</div>
+        <div className="main-left">
+          {data ? leftSide(data) : loadingEffect()}
+        </div>
         <div className="main-right">{showContent && rightSide(rightData)}</div>
       </div>
     </div>
