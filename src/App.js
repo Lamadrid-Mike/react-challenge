@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
@@ -51,17 +51,21 @@ const data = [
 ];
 
 function App() {
-  // const [data, setData] = useState(null);
+  const [loadData, setLoadData] = useState(null);
   const [rightData, setRightData] = useState(null);
   const [showContent, setShowContent] = useState(false);
 
-  // useEffect(() => {
-  //   return async function () {
-  //     await fetch(Data)
-  //       .then((response) => response.json())
-  //       .then((json) => setData(json));
-  //   };
-  // }, []);
+  const loadFirstEffect = new Promise((res) => {
+    setTimeout(() => {
+      return res(data);
+    }, 1500);
+  });
+
+  useEffect(() => {
+    return async function () {
+      await loadFirstEffect.then((data) => setLoadData(data));
+    };
+  }, []);
 
   const leftSide = (array) => {
     return array.map((el, id) => {
@@ -96,7 +100,6 @@ function App() {
       rating,
     });
     setShowContent(true);
-    console.log(rating);
   };
 
   const rightSide = (object) => {
@@ -130,7 +133,7 @@ function App() {
       <p className="text-align">welcome to our collection please pick any</p>
       <div className="main-container">
         <div className="main-left">
-          {data ? leftSide(data) : loadingEffect()}
+          {loadData ? leftSide(loadData) : loadingEffect()}
         </div>
         <div className="main-right">{showContent && rightSide(rightData)}</div>
       </div>
