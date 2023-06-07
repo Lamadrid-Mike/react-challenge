@@ -55,17 +55,17 @@ function App() {
   const [rightData, setRightData] = useState(null);
   const [showContent, setShowContent] = useState(false);
 
-  const loadFirstEffect = new Promise((res) => {
+  new Promise((res) => {
     setTimeout(() => {
       return res(data);
     }, 1500);
-  });
+  }).then((data) => setLoadData(data));
 
-  useEffect(() => {
-    return function () {
-      loadFirstEffect.then((data) => setLoadData(data));
-    };
-  }, []);
+  // useEffect(() => {
+  //   return function () {
+  //     loadFirstEffect.);
+  //   };
+  // }, []);
 
   const leftSide = (array) => {
     return array.map((el, id) => {
