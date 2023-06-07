@@ -61,12 +61,6 @@ function App() {
     }, 1500);
   }).then((data) => setLoadData(data));
 
-  // useEffect(() => {
-  //   return function () {
-  //     loadFirstEffect.);
-  //   };
-  // }, []);
-
   const leftSide = (array) => {
     return array.map((el, id) => {
       return (
