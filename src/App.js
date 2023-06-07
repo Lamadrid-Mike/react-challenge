@@ -62,8 +62,8 @@ function App() {
   });
 
   useEffect(() => {
-    return async function () {
-      await loadFirstEffect.then((data) => setLoadData(data));
+    return function () {
+      loadFirstEffect.then((data) => setLoadData(data));
     };
   }, []);
 
