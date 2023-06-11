@@ -68,7 +68,7 @@ function App() {
           <img
             src={el.image}
             alt={el.title}
-            style={{ width: 120, height: "auto" }}
+            style={{ width: 120, height: "auto", borderRadius: "10px" }}
           ></img>
           <p>{el.title}</p>
           <Button
