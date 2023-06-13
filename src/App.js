@@ -61,6 +61,18 @@ function App() {
     }, 1500);
   }).then((data) => setLoadData(data));
 
+  const descriptionBtn = (event) => {
+    let itemId = +event.target.id;
+    let result = data.find((el) => el.id === itemId);
+    const { price, description, rating } = result;
+    setRightData({
+      price,
+      description,
+      rating,
+    });
+    setShowContent(true);
+  };
+
   const leftSide = (array) => {
     return array.map((el, id) => {
       return (
@@ -82,18 +94,6 @@ function App() {
         </div>
       );
     });
-  };
-
-  const descriptionBtn = (event) => {
-    let itemId = +event.target.id;
-    let result = data.find((el) => el.id === itemId);
-    const { price, description, rating } = result;
-    setRightData({
-      price,
-      description,
-      rating,
-    });
-    setShowContent(true);
   };
 
   const rightSide = (object) => {
