@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
-import CircularProgress from "@mui/material/CircularProgress";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import CircularProgress from "@mui/material/CircularProgress";
 import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
 import "./App.css";
