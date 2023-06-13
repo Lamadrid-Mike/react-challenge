@@ -124,7 +124,7 @@ function App() {
   return (
     <div>
       <h1 className="text-align">Clothing Shop</h1>
-      <p className="text-align">welcome to our collection please pick any</p>
+      <p className="text-align">welcome to our collection</p>
       <div className="main-container">
         <div className="main-left">
           {loadData ? leftSide(loadData) : loadingEffect()}
